@@ -11,7 +11,7 @@
 [![React](https://img.shields.io/badge/React-18+-61dafb.svg)](https://react.dev)
 [![Prisma](https://img.shields.io/badge/Prisma-6+-2d3748.svg)](https://prisma.io)
 
-**Engineered by [Arjun Awasthi](https://github.com/arjunawasthi)**
+**Engineered by [Arjun Awasthi](https://github.com/arjunawasthi07)**
 
 </div>
 
@@ -113,7 +113,7 @@ docker compose up -d --build
 
 #### 1. Clone the repository
 ```bash
-git clone https://github.com/arjunawasthi/linkpulse.git
+git clone https://github.com/arjunawasthi07/Linkpulse.git
 cd linkpulse
 ```
 
@@ -184,7 +184,7 @@ BASE_URL="http://localhost:5000"
 ## 👤 Author
 
 **Arjun Awasthi**
-- GitHub: [@arjunawasthi](https://github.com/arjunawasthi)
+- GitHub: [@arjunawasthi07](https://github.com/arjunawasthi07)
 - Email: arjunawasthiaj07@gmail.com
 
 ---
