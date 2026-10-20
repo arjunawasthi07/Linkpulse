@@ -1,0 +1,65 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String
+  password  String
+  role      Role     @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  links     Link[]
+
+  @@map("users")
+}
+
+model Link {
+  id                  String    @id @default(uuid())
+  originalUrl         String
+  slug                String    @unique
+  title               String?
+  password            String?
+  isPasswordProtected Boolean   @default(false)
+  isActive            Boolean   @default(true)
+  expiresAt           DateTime?
+  totalClicks         Int       @default(0)
+  userId              String?
+  user                User?     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
+  clicks              Click[]
+
+  @@index([slug])
+  @@index([userId])
+  @@map("links")
+}
+
+model Click {
+  id        String   @id @default(uuid())
+  linkId    String
+  link      Link     @relation(fields: [linkId], references: [id], onDelete: Cascade)
+  ip        String?
+  country   String?  @default("Unknown")
+  city      String?  @default("Unknown")
+  browser   String?  @default("Unknown")
+  os        String?  @default("Unknown")
+  device    String?  @default("Desktop")
+  referrer  String?  @default("Direct")
+  timestamp DateTime @default(now())
+
+  @@index([linkId])
+  @@index([timestamp])
+  @@map("clicks")
+}
