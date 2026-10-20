@@ -37,8 +37,7 @@ const register = async (req, res, next) => {
     const hashedPassword = await bcrypt.hash(password, salt);
 
     // If this is the very first user, grant ADMIN role automatically
-    const totalUsers = await prisma.user.count();
-    const role = totalUsers === 0 ? 'ADMIN' : 'USER';
+    const role = "USER";
 
     const newUser = await prisma.user.create({
       data: {
